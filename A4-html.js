@@ -2,11 +2,11 @@
 function A4html( element, options ) {
     "use strict";
     
-    options = merge({
+    options = extendObject({
         orientation : 'P',
         unit: 'pt',
         marge: 36
-    },options);
+    }, options);
     
     var container       = document.getElementById( element ),
         HEADER          = container.getElementsByTagName('HEADER')[0],
@@ -64,31 +64,10 @@ function A4html( element, options ) {
         return parseFloat(ppi);
     }*/
 
-    function merge(obj1, obj2)
-    {
-        for (var p in obj2) {
-            try {
-                if ( obj2[p].constructor==Object ) {
-                    obj1[p] = merge(obj1[p], obj2[p]);
-                } else {
-                    obj1[p] = obj2[p];
-                }
-            } catch(e) {
-                obj1[p] = obj2[p];
-            }
-        }
-        return obj1;
-    }
-
-    function pxToPt(a) { return a * 0.75; }
-    function ptToPx(a) { return a * 1.3333333333333; }
-
-    function outerHeight( element )
-    {
-        return  element.offsetHeight +
-                parseFloat(getStyle(element, 'margin-top'))+
-                parseFloat(getStyle(element, 'margin-bottom'));
-    }
+    function extendObject( a, b ) { for( var p in b ) try { if( b[p].constructor==Object ) a[p] = merge(a[p], b[p]); else a[p] = b[p]; } catch(e) { a[p] = b[p]; } return a; }
+    function outerHeight( a ) { return  a.offsetHeight + parseFloat(getStyle(a, 'margin-top')) + parseFloat(getStyle(a, 'margin-bottom')); }
+    function pxToPt( a ) { return a * 0.75; }
+    function ptToPx( a ) { return a * 1.3333333333333; }
     
     
     var getStyle = function (e, styleName) {
