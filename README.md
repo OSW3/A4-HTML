@@ -33,7 +33,7 @@
   A4html("myA4Document");
   
   // Basic Call with options
-  A4html("myA4Document", { ... options ...});
+  A4html("myA4Document", { /*... options ...*/ });
 ```
 
 if you prefere jQuery
@@ -42,7 +42,7 @@ if you prefere jQuery
   $("#myA4Document").A4html();
   
   // jQuery Call with options
-  $("#myA4Document").A4html({ ... options ...});
+  $("#myA4Document").A4html({ /*... options ...*/ });
 ```
 
 ## Options ##
